@@ -32,7 +32,7 @@
 ;;    with few acquirers/users/time to get a quick feel, or many to stress the
 ;;    system.
 (def test (create-test! uri model-name test-name
-                        "http://dockerhost:8080"
+                        "http://192.168.99.100:8080"
                         1 ;; duration (minutes)
                         sim-agent-count))
 ;; => {:db/id 223456789}

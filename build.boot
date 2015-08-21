@@ -1,7 +1,7 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"resources"}
-  :dependencies '[[org.clojure/clojure "1.6.0"]
+  :dependencies '[[org.clojure/clojure "1.7.0"]
 
                   ;; Simulant & Friends
                   [com.datomic/simulant "0.1.7" :exclusions [com.datomic/datomic-free]]
@@ -57,7 +57,7 @@
                    :list-fn 'io.datom.hawk-sim.model/list-models}
   create-test     {:uri datomic-uri
                    :create-fn 'io.datom.hawk-sim.test/create-test!
-                   :host-name "http://dockerhost:8080"
+                   :host-name "http://192.168.99.100:8080"
                    :duration 1
                    :concurrency 1}
   list-tests      {:uri datomic-uri
@@ -73,4 +73,3 @@
   validate-latest {:uri datomic-uri
                    :validate-fn 'io.datom.hawk-sim.validations/validate
                    :lookup-fn 'io.datom.hawk-sim.sim/latest-sim})
-

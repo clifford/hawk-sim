@@ -80,6 +80,15 @@
     (-> @(d/transact conn (concat [test] agents actions))
         (tx-ent (e test)))))
 
+(defmethod sim/create-test :model.type/metric
+  [conn model test-basis]
+  (let [test    (gen-test model test-basis)
+        agents  (gen-acq-agents test)
+        actions (mapcat (fn [agent] (gen-agent-actions agent (:test/duration test)))
+                        agents)]
+    (-> @(d/transact conn (concat [test] agents actions))
+        (tx-ent (e test)))))
+
 (defn create-test!
   "Persist a test and its metadata to the database."
   [uri model-name test-name host duration agent-count]
